@@ -6,6 +6,55 @@ To the best of our knowledge, AMC is so far the **largest meeting corpus in scal
 
 [Call for Participation](https://modelscope.cn/headlines/article/52)
 
+[Track 1 Topic Segmentation]()
+
+[Track 2 Topic-level and Session-level Extractive Summarization]()
+
+[Track 3 Topic Title Generation]()
+
+[Track 4 Keyphrase Extraction]()
+
+[Track 5 Action Item Detection]()
+
+# Installation
+
+
+## Prepare ModelScope SDK Token
+Register on the [ModelScope](https://modelscope.cn/home) and get your token in the individual center page.
+
+
+##  Clone the repo:
+``` sh
+git clone https://github.com/alibaba-damo-academy/SpokenNLP.git
+```
+
+## Install Conda:
+``` sh
+wget https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh
+sh Miniconda3-latest-Linux-x86_64.sh
+conda create -n modelscope python=3.7
+conda activate modelscope
+```
+
+## Install Pytorch (version >= 1.12.0): 
+
+- CUDA 10.2
+conda install pytorch==1.12.1 torchvision==0.13.1 torchaudio==0.12.1 cudatoolkit=10.2 -c pytorch
+- CUDA 11.3
+conda install pytorch==1.12.1 torchvision==0.13.1 torchaudio==0.12.1 cudatoolkit=11.3 -c pytorch
+- CUDA 11.6
+conda install pytorch==1.12.1 torchvision==0.13.1 torchaudio==0.12.1 cudatoolkit=11.6 -c pytorch -c conda-forge
+
+For more versions, please see https://pytorch.org/get-started/locally/
+
+## Install ModelScope:
+``` sh
+pip install "modelscope[nlp]" -f https://modelscope.oss-cn-beijing.aliyuncs.com/releases/repo.html
+```
+
+## Install other packages
+
+
 # Baseline System
 ## Track 1 Topic Segmentation
 ```shell
@@ -82,3 +131,19 @@ The dev results of baselines on action item detection are as follows:
 |------------|---------------------------------------------------------------------------------------------------------------------|-------------|
 | BERT       | [mengzi-bert-base](https://modelscope.cn/models/langboat/mengzi-bert-base/summary)                                  | 68.15       |
 | StructBERT | [damo/nlp_structbert_backbone_base_std](https://modelscope.cn/models/damo/nlp_structbert_backbone_base_std/summary) | 69.43       |
+
+# Contact
+
+If you have any questions about AliMeeting4MUG, please contact us by
+
+- email: [icassp2023-mug-challenge@list.alibaba-inc.com](icassp2023-mug-challenge@list.alibaba-inc.com)
+
+- Dingding group:
+<div align="left"><img src="image/dingding.png" width="400"/></div>
+
+# Acknowledge
+
+1. We borrowed a lot of code from [ModelScope](https://modelscope.cn/home) and [Transformers](https://huggingface.co/docs/transformers/main/en/index).
+
+# License
+This project is licensed under the [Apache License 2.0](./../LICENSE). This project also contains various third-party components and some code modified from other repos under other open source licenses.

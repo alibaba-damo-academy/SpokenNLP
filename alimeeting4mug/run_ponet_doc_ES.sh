@@ -14,7 +14,7 @@ do
     # If you encounter "address already used" error, just run again or manually set an available port id.
     PORT_ID=$(expr $RANDOM + 1000)
     TASK=doc_key_sentence_extraction
-    OUTPUT_DIR=./$TASK/ponet-docExtracitveSum-seed${seed}
+    OUTPUT_DIR=./output/$TASK/ponet-docExtracitveSum-seed${seed}
 
     mkdir -p $OUTPUT_DIR
     LOGFILE=$OUTPUT_DIR/run.log

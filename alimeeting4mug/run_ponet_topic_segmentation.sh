@@ -12,9 +12,9 @@ do
     # If you encounter "address already used" error, just run again or manually set an available port id.
     PORT_ID=$(expr $RANDOM + 1000)
     TASK=topic_segmentation
-    OUTPUT_DIR=./$TASK/ponet-topicSegment-seed${seed}
+    OUTPUT_DIR=./output/$TASK/ponet-topicSegment-seed${seed}
 
-    mkdir $OUTPUT_DIR
+    mkdir -p $OUTPUT_DIR
     LOGFILE=$OUTPUT_DIR/`date +%Y%m%d%H`.log
 
     # Allow multiple threads

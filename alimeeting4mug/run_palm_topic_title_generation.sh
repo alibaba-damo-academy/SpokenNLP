@@ -12,7 +12,7 @@ do
     # If you encounter "address already used" error, just run again or manually set an available port id.
     PORT_ID=$(expr $RANDOM + 1000)
     TASK=topic_title_generation
-    OUTPUT_DIR=./$TASK/palm-topicTitleGeneration-seed${seed}
+    OUTPUT_DIR=./output/$TASK/palm-topicTitleGeneration-seed${seed}
 
     mkdir -p $OUTPUT_DIR
     LOGFILE=$OUTPUT_DIR/`date +%Y%m%d%H`.log

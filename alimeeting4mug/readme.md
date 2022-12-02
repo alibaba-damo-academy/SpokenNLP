@@ -25,7 +25,7 @@ git clone https://github.com/alibaba-damo-academy/SpokenNLP.git
 
 ## Prepare ModelScope SDK Token
 Register on the [ModelScope](https://modelscope.cn/home) and get your token in the individual center page. Then **[Modifying Configuration Files](src/utils/config.py)**
-
+<div align="left"><img src="image/sdk_token.png" width="400"/></div>
 
 ## Install Conda:
 ``` sh

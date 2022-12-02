@@ -77,8 +77,8 @@ Note: The mean and standard deviation are reported as 5 times run with different
 
 ## Track 2 Topic-level and Session-level Extractive Summarization
 ```shell 
-sh run_ponet_topic_ES.sh
-sh run_ponet_doc_ES.sh
+sh run_ponet_topic_extractive_summarization.sh
+sh run_ponet_doc_extractive_summarization.sh
 ```
 The baseline model of topic-level ES is available at [nlp_ponet_extractive-summarization_topic-level_chinese-base](https://modelscope.cn/models/damo/nlp_ponet_extractive-summarization_topic-level_chinese-base/summary).  
 The dev results of baselines on topic-level ES are as follows:

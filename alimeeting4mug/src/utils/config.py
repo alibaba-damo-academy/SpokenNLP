@@ -16,3 +16,4 @@
 
 # 必填, 从modelscope WEB端个人中心获取
 MS_SDK_TOKEN = ""
+assert MS_SDK_TOKEN, "Register on the [ModelScope](https://modelscope.cn/home) and get your token in the individual center page. Then assign the value to MS_SDK_TOKEN"

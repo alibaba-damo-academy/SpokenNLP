@@ -57,7 +57,9 @@ pip install "modelscope[nlp]" -f https://modelscope.oss-cn-beijing.aliyuncs.com/
 ```
 
 ## Install other packages
-
+``` sh
+pip install -r requirements.txt
+```
 
 # Baseline System
 ## Track 1 Topic Segmentation

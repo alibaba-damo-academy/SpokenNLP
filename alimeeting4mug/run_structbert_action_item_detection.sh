@@ -12,11 +12,11 @@ do
     # If you encounter "address already used" error, just run again or manually set an available port id.
     PORT_ID=$(expr $RANDOM + 1000)
     TASK=action_detection
-    OUTPUT_DIR=../output/$TASK/structbert-actionItemDetection-seed${seed}
+    OUTPUT_DIR=./output/$TASK/structbert-actionItemDetection-seed${seed}
 
     mkdir -p $OUTPUT_DIR
     LOGFILE=$OUTPUT_DIR/`date +%Y%m%d%H`.log
-
+    echo "write logs to ${LOGFILE}"
     # Allow multiple threads
     export OMP_NUM_THREADS=8
 

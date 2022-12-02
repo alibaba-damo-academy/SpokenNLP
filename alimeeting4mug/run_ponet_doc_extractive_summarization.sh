@@ -18,6 +18,7 @@ do
 
     mkdir -p $OUTPUT_DIR
     LOGFILE=$OUTPUT_DIR/run.log
+    echo "write logs to ${LOGFILE}"
 
     # Allow multiple threads
     export OMP_NUM_THREADS=8

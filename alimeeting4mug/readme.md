@@ -18,15 +18,14 @@ To the best of our knowledge, AMC is so far the **largest meeting corpus in scal
 
 # Installation
 
-
-## Prepare ModelScope SDK Token
-Register on the [ModelScope](https://modelscope.cn/home) and get your token in the individual center page. Then **[Modifying Configuration Files](src/utils/config.py)**
-
-
 ##  Clone the repo:
 ``` sh
 git clone https://github.com/alibaba-damo-academy/SpokenNLP.git
 ```
+
+## Prepare ModelScope SDK Token
+Register on the [ModelScope](https://modelscope.cn/home) and get your token in the individual center page. Then **[Modifying Configuration Files](src/utils/config.py)**
+
 
 ## Install Conda:
 ``` sh

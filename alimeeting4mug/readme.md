@@ -6,21 +6,21 @@ To the best of our knowledge, AMC is so far the **largest meeting corpus in scal
 
 [Call for Participation](https://modelscope.cn/headlines/article/52)
 
-[Track 1 Topic Segmentation]()
+[Track 1 Topic Segmentation](https://modelscope.cn/competition/12/summary)
 
-[Track 2 Topic-level and Session-level Extractive Summarization]()
+[Track 2 Topic-level and Session-level Extractive Summarization](https://modelscope.cn/competition/13/summary)
 
-[Track 3 Topic Title Generation]()
+[Track 3 Topic Title Generation](https://modelscope.cn/competition/14/summary)
 
-[Track 4 Keyphrase Extraction]()
+[Track 4 Keyphrase Extraction](https://modelscope.cn/competition/18/summary)
 
-[Track 5 Action Item Detection]()
+[Track 5 Action Item Detection](https://modelscope.cn/competition/17/summary)
 
 # Installation
 
 
 ## Prepare ModelScope SDK Token
-Register on the [ModelScope](https://modelscope.cn/home) and get your token in the individual center page.
+Register on the [ModelScope](https://modelscope.cn/home) and get your token in the individual center page. Then **[Modifying Configuration Files](src/utils/config.py)**
 
 
 ##  Clone the repo:

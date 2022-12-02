@@ -49,6 +49,8 @@ from transformers import (
 import numpy as np
 from transformers.trainer_utils import get_last_checkpoint
 import torch
+sys.path.append("/".join(os.path.abspath(__file__).split("/")[:-2]))
+from utils.config import MS_SDK_TOKEN
 
 
 @dataclass
@@ -257,9 +259,7 @@ if __name__ == "__main__":
         from modelscope.msdatasets import MsDataset
         from modelscope.utils.constant import DownloadMode
         api = HubApi()
-        sdk_token = ""  # 必填
-        assert sdk_token, "从modelscope WEB端个人中心获取"
-        api.login(sdk_token)  # online
+        api.login(MS_SDK_TOKEN)  # online
         input_config_kwargs = {'delimiter': '\t'}
         data = MsDataset.load(
             'Alimeeting4MUG',

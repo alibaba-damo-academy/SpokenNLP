@@ -42,7 +42,7 @@ import torch
 sys.path.append("/".join(os.path.abspath(__file__).split("/")[:-2]))
 
 from utils.tokenizer import BasicTokenizer
-
+from utils.config import MS_SDK_TOKEN
 bTokenizer = BasicTokenizer()
 tokenize_func = bTokenizer.tokenize
 
@@ -445,9 +445,7 @@ def main():
         from modelscope.msdatasets import MsDataset
         from modelscope.utils.constant import DownloadMode
         api = HubApi()
-        sdk_token = ""  # 必填
-        assert sdk_token, "从modelscope WEB端个人中心获取"
-        api.login(sdk_token)  # online
+        api.login(MS_SDK_TOKEN)  # online
 
         input_config_kwargs = {'delimiter': '\t'}
         data = MsDataset.load(

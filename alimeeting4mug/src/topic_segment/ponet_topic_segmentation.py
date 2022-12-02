@@ -40,6 +40,7 @@ from transformers.trainer_utils import get_last_checkpoint
 from transformers.utils.versions import require_version
 import torch
 sys.path.append("/".join(os.path.abspath(__file__).split("/")[:-2]))
+from utils.config import MS_SDK_TOKEN
 
 # Will error if the minimal version of Transformers is not installed. Remove at your own risks.
 # check_min_version("4.11.0.dev0")
@@ -359,9 +360,7 @@ def main():
         from modelscope.msdatasets import MsDataset
         from modelscope.utils.constant import DownloadMode
         api = HubApi()
-        sdk_token = ""  # 必填
-        assert sdk_token, "从modelscope WEB端个人中心获取"
-        api.login(sdk_token)  # online
+        api.login(MS_SDK_TOKEN)  # online
         input_config_kwargs = {'delimiter': '\t'}
         data = MsDataset.load(
             'Alimeeting4MUG',

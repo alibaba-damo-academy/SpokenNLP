@@ -19,6 +19,7 @@ from segeval.window.pk import pk as PK
 from segeval.window.windowdiff import window_diff as WD
 import numpy as np
 from tokenizer import BasicTokenizer
+from config import MS_SDK_TOKEN
 from rouge import Rouge as rouge_scorer
 import sys
 import pandas as pd
@@ -44,11 +45,26 @@ def read_jsonl_local(input_file):
     return samples
 
 
-def read_jsonl_online(input_file):
-    context = ssl._create_unverified_context()
-    samples = request.urlopen(input_file, context=context).readlines()
-    samples = [json.loads(_.decode("utf-8")) for _ in samples]
-    return samples
+def read_online(split, subset_name="default", num_lines=None):
+    assert split == "train" or split == "validation"
+    from modelscope.hub.api import HubApi
+    from modelscope.msdatasets import MsDataset
+    from modelscope.utils.constant import DownloadMode
+    api = HubApi()
+    api.login(MS_SDK_TOKEN)  # online
+    input_config_kwargs = {'delimiter': '\t'}
+    data = MsDataset.load(
+        'Alimeeting4MUG',
+        namespace='modelscope',
+        download_mode=DownloadMode.FORCE_REDOWNLOAD,
+        subset_name=subset_name,
+        **input_config_kwargs)
+    if num_lines:
+        data = data[split].select(range(num_lines))
+    else:
+        data = data[split]
+    sample = data.map(lambda x: json.loads(x['content']), batched=False, remove_columns=["idx", "content"])
+    return sample
 
 
 # read_jsonl = read_jsonl_online
@@ -124,20 +140,20 @@ def topic_segment_score_func(pos_f1, one_minus_pk, one_minus_wd):
     return score
 
 
-def evaluate_multi_files(input_label_file, input_pred_files, task):
+def evaluate_multi_files(split, input_pred_files, task):
     total_res = []
     for pred_file in input_pred_files:
         pred_file = deepcopy(pred_file)
         if task == "topic_segmentation":
-            eval_res = topic_segment_evaluate(input_label_file=input_label_file, input_pred_file=pred_file["result"])
+            eval_res = topic_segment_evaluate(split, input_pred_file=pred_file["result"])
         elif task == "extractive_summarization":
-            eval_res = extractive_summarization_evaluate(input_label_file=input_label_file, input_pred_file=pred_file["result"])
+            eval_res = extractive_summarization_evaluate(split, input_pred_file=pred_file["result"])
         elif task == "topic_title_generation":
-            eval_res = topic_title_generation_evaluate(input_label_file=input_label_file, input_pred_file=pred_file["result"])
+            eval_res = topic_title_generation_evaluate(split, input_pred_file=pred_file["result"])
         elif task == "keyphrase_extraction":
-            eval_res = keyphrase_extraction_evaluate(input_label_file=input_label_file, input_pred_file=pred_file["result"])
-        elif task == "action_item_extraction":
-            eval_res = action_item_detection_evaluate(input_label_file=input_label_file, input_pred_file=pred_file["result"])
+            eval_res = keyphrase_extraction_evaluate(split, input_pred_file=pred_file["result"])
+        elif task == "action_item_detection":
+            eval_res = action_item_detection_evaluate(split, input_pred_file=pred_file["result"])
         else:
             raise NotImplementedError
         del pred_file["result"]
@@ -148,10 +164,10 @@ def evaluate_multi_files(input_label_file, input_pred_files, task):
     return csv_string
 
 
-def topic_segment_evaluate(input_label_file, input_pred_file):
-    label_samples = read_jsonl(input_label_file)
+def topic_segment_evaluate(split, input_pred_file):
     pred_samples = read_jsonl(input_pred_file)
-    assert len(label_samples) == len(pred_samples), "NUMBER ERROR."
+    label_samples = read_online(split, num_lines=len(pred_samples))
+    assert label_samples.num_rows == len(pred_samples), "NUMBER ERROR."
     total_preds = []
     total_labels = []
     total_preds_split = []
@@ -250,9 +266,9 @@ def extractive_summarization_score_func(mean_items):
     return score
 
 
-def extractive_summarization_evaluate(input_label_file, input_pred_file):
-    label_samples = read_jsonl(input_label_file)[:2]
-    pred_samples = read_jsonl(input_pred_file)[:2]
+def extractive_summarization_evaluate(split, input_pred_file):
+    pred_samples = read_jsonl(input_pred_file)
+    label_samples = read_online(split, num_lines=len(pred_samples))
     assert len(label_samples) == len(pred_samples), "NUMBER ERROR."
 
     total_topic_es_label = []
@@ -328,9 +344,9 @@ def topic_title_generation_score_func(mean_items):
     return score
 
 
-def topic_title_generation_evaluate(input_label_file, input_pred_file):
-    label_samples = read_jsonl(input_label_file)[:2]
-    pred_samples = read_jsonl(input_pred_file)[:2]
+def topic_title_generation_evaluate(split, input_pred_file):
+    pred_samples = read_jsonl(input_pred_file)
+    label_samples = read_online(split, num_lines=len(pred_samples))
     assert len(label_samples) == len(pred_samples), "NUMBER ERROR."
 
     total_topic_ttg_label = []
@@ -471,9 +487,9 @@ def calculateRouge(keywords, goldenwords):
     }
 
 
-def keyphrase_extraction_evaluate(input_label_file, input_pred_file):
-    label_samples = read_jsonl(input_label_file)
+def keyphrase_extraction_evaluate(split, input_pred_file):
     pred_samples = read_jsonl(input_pred_file)
+    label_samples = read_online(split, num_lines=len(pred_samples))
     assert len(label_samples) == len(pred_samples), "NUMBER ERROR."
 
     total_preds = []
@@ -491,9 +507,9 @@ def keyphrase_extraction_evaluate(input_label_file, input_pred_file):
     return out_res
 
 
-def action_item_detection_evaluate(input_label_file, input_pred_file):
-    label_samples = read_jsonl(input_label_file)
+def action_item_detection_evaluate(split, input_pred_file):
     pred_samples = read_jsonl(input_pred_file)
+    label_samples = read_online(split, num_lines=len(pred_samples))
     assert len(label_samples) == len(pred_samples), "NUMBER ERROR."
 
     total_preds = []
@@ -522,17 +538,33 @@ def action_item_detection_evaluate(input_label_file, input_pred_file):
 
 
 if __name__ == "__main__":
-    label_file = "./../../datasets/AMC/dev.jsonl"
-    pred_file = "./../../datasets/AMC/dev_pesudo_submit.jsonl"
+    split = "validation" # validation or train
+    pred_file = "./../../submitted_samples/topic_segmentation_dev_pesudo_submit.jsonl"
     pred_files = [{"recodId": 1,"result":pred_file}, {"recodId": 2,"result":pred_file}]
 
-    out_res = evaluate_multi_files(input_label_file=label_file, input_pred_files=pred_files, task="topic_segmentation")
+    out_res = evaluate_multi_files(split=split, input_pred_files=pred_files, task="topic_segmentation")
     print(out_res)
-    out_res = evaluate_multi_files(input_label_file=label_file, input_pred_files=pred_files, task="extractive_summarization")
+
+    pred_file = "./../../submitted_samples/extractive_summarization_dev_pesudo_submit.jsonl"
+    pred_files = [{"recodId": 1,"result":pred_file}, {"recodId": 2,"result":pred_file}]
+
+    out_res = evaluate_multi_files(split=split, input_pred_files=pred_files, task="extractive_summarization")
     print(out_res)
-    out_res = evaluate_multi_files(input_label_file=label_file, input_pred_files=pred_files, task="topic_title_generation")
+
+    pred_file = "./../../submitted_samples/topic_title_generation_dev_pesudo_submit.jsonl"
+    pred_files = [{"recodId": 1,"result":pred_file}, {"recodId": 2,"result":pred_file}]
+
+    out_res = evaluate_multi_files(split=split, input_pred_files=pred_files, task="topic_title_generation")
     print(out_res)
-    out_res = evaluate_multi_files(input_label_file=label_file, input_pred_files=pred_files, task="keyphrase_extraction")
+
+    pred_file = "./../../submitted_samples/keyphrase_extraction_dev_pesudo_submit.jsonl"
+    pred_files = [{"recodId": 1,"result":pred_file}, {"recodId": 2,"result":pred_file}]
+
+    out_res = evaluate_multi_files(split=split, input_pred_files=pred_files, task="keyphrase_extraction")
     print(out_res)
-    out_res = evaluate_multi_files(input_label_file=label_file, input_pred_files=pred_files, task="action_item_extraction")
+
+    pred_file = "./../../submitted_samples/action_item_detection_dev_pesudo_submit.jsonl"
+    pred_files = [{"recodId": 1,"result":pred_file}, {"recodId": 2,"result":pred_file}]
+
+    out_res = evaluate_multi_files(split=split, input_pred_files=pred_files, task="action_item_detection")
     print(out_res)

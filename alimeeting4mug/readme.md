@@ -113,6 +113,8 @@ The dev results of baselines on topic title generation are as follows:
 | BART    | fnlp/bart-base-chinese                                                                                                    | 31.06   | 28.92   |
 | PALM2.0 | [damo/nlp_palm2.0_pretrained_chinese-base](https://modelscope.cn/models/damo/nlp_palm2.0_pretrained_chinese-base/summary) | 31.28   | 29.43   |
 
+- Note: batchsize=4 if gpuMemory = 16G
+
 ## Track 4 Keyphrase Extraction
 Please refer to [src/keyphrase_extraction/readme](src/keyphrase_extraction/README.md)
  

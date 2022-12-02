@@ -108,7 +108,7 @@ The dev results of baselines on topic title generation are as follows:
 | PALM2.0 | [damo/nlp_palm2.0_pretrained_chinese-base](https://modelscope.cn/models/damo/nlp_palm2.0_pretrained_chinese-base/summary) | 31.28   | 29.43   |
 
 ## Track 4 Keyphrase Extraction
-Please refer to [src/keyphrase_extraction/readme](alimeeting4mug/src/keyphrase_extraction/README.md)
+Please refer to [src/keyphrase_extraction/readme](src/keyphrase_extraction/README.md)
  
 The baseline model of keyphrase extraction is available at [nlp_structbert_keyphrase-extraction_base-icassp2023-mug-track4-baseline](https://modelscope.cn/models/damo/nlp_structbert_keyphrase-extraction_base-icassp2023-mug-track4-baseline/summary).  
 The dev results of baselines on keyphrase extraction are as follows:
@@ -131,6 +131,10 @@ The dev results of baselines on action item detection are as follows:
 |------------|---------------------------------------------------------------------------------------------------------------------|-------------|
 | BERT       | [mengzi-bert-base](https://modelscope.cn/models/langboat/mengzi-bert-base/summary)                                  | 68.15       |
 | StructBERT | [damo/nlp_structbert_backbone_base_std](https://modelscope.cn/models/damo/nlp_structbert_backbone_base_std/summary) | 69.43       |
+
+# Some Code Note
+- Task Evaluation and Rank Score Computation: metrics/* and utils/challenge_evaluate.py 
+- Get Dataset and Parse for each task: please read alimeeting4mug_data_download function in each tasks baseline.
 
 # Contact
 

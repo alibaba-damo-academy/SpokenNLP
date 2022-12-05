@@ -76,7 +76,7 @@ The AMC dev set results from the baseline system and systems based on other back
 | Longformer  | IDEA-CCNL/Erlangshen-Longformer-110M                                                                                                        | 23.24±1.35  |
 | PoNet(baseline system)       | [damo/nlp_ponet_fill-mask_chinese-base](https://modelscope.cn/models/damo/nlp_ponet_fill-mask_chinese-base/summary) | 25.10±0.55  |
 
-Note: The mean and standard deviation are reported as 5 times run with different seeds. 
+Note: The mean and standard deviation (e.g., for 25.10±0.55, 25.10 is the mean, 0.55 is the std) are reported based on results from 5 runs with different random seeds.
 
 ## Track 2 Topic-level and Session-level Extractive Summarization
 ```shell 
@@ -91,7 +91,7 @@ The AMC dev set results from the baseline system and systems based on other back
 | Longformer  | IDEA-CCNL/Erlangshen-Longformer-110M                                                                                                        | 50.45±0.30 | 34.15±0.48 | 44.62±0.58 | 63.22±0.25 | 50.72±0.31 | 60.36±0.37 |
 | PoNet       | [damo/nlp_ponet_fill-mask_chinese-base](https://modelscope.cn/models/damo/nlp_ponet_fill-mask_chinese-base/summary) | 52.52±0.41 | 35.50±0.36 | 45.87±0.44 | 66.43±0.26 | 53.77±0.43 | 63.03±0.27 | 
 
-Note: The mean and standard deviation are reported as 5 times run with different seeds. We report both average and best Rouge-1,2,L scores based on the three references.
+Note: The mean and standard deviation (e.g., for 25.10±0.55, 25.10 is the mean, 0.55 is the std) are reported based on results from 5 runs with different random seeds. We report both average and best Rouge-1,2,L scores based on the three references.
 
 
 The baseline model of session-level ES is available at [nlp_ponet_extractive-summarization_doc-level_chinese-base](https://modelscope.cn/models/damo/nlp_ponet_extractive-summarization_doc-level_chinese-base/summary).  

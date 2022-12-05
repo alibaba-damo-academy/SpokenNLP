@@ -1,6 +1,6 @@
-# Description
+# Introduction
 
-To fuel the SLP research on meetings and tackle the key challenges summarized earlier, the Speech Lab and the Language Technology Lab and the ModelScope Community of Alibaba Group, Alibaba Cloud Tianchi Platform, and Zhejiang University launch a **General Meeting Understanding and Generation (MUG)** challenge, as an ICASSP2023 Signal Processing Grand Challenge. To facilitate the MUG challenge, we construct and release a meeting dataset, the AliMeeting4MUG Corpus (AMC).
+To fuel the Spoken Language Processing (SLP) research on meetings and tackle the key challenges, the Speech Lab and the Language Technology Lab and the ModelScope Community of Alibaba Group, Alibaba Cloud Tianchi Platform, and Zhejiang University launch a **General Meeting Understanding and Generation (MUG)** challenge, as an ICASSP2023 Signal Processing Grand Challenge. To facilitate the MUG challenge, we construct and release a meeting dataset, the AliMeeting4MUG Corpus (AMC).
 
 To the best of our knowledge, AMC is so far the **largest meeting corpus in scale and facilitates the most SLP tasks**. The MUG challenge includes five tracks: Track 1 Topic Segmentation (TS), Track 2 Topic-level and Session-level Extractive Summarization (ES), Track 3 Topic Title Generation (TTG),  Track 4 Keyphrase Extraction (KPE), and Track 5 Action Item Detection (AID).
 
@@ -16,18 +16,20 @@ To the best of our knowledge, AMC is so far the **largest meeting corpus in scal
 
 [Track 5 Action Item Detection](https://modelscope.cn/competition/17/summary)
 
+[Dataset AliMeeting4MUG](https://modelscope.cn/datasets/modelscope/Alimeeting4MUG/summary)
+
 # Installation
 
-##  Clone the repo:
+##  Clone the repo
 ``` sh
 git clone https://github.com/alibaba-damo-academy/SpokenNLP.git
 ```
 
 ## Prepare ModelScope SDK Token
-Register on the [ModelScope](https://modelscope.cn/home) and get your token in the individual center page. Then **[Modifying Configuration Files](src/utils/config.py)**
+Register on the [ModelScope](https://modelscope.cn/home) and get your token in the individual center page. Then **[Modify Configuration Files](src/utils/config.py)**
 <div align="left"><img src="image/sdk_token.png" width="400"/></div>
 
-## Install Conda:
+## Install Conda
 ``` sh
 wget https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh
 sh Miniconda3-latest-Linux-x86_64.sh
@@ -35,7 +37,7 @@ conda create -n modelscope python=3.7
 conda activate modelscope
 ```
 
-## Install Pytorch (version >= 1.12.0): 
+## Install Pytorch (version >= 1.12.0)
 
 - CUDA 10.2
     ``` sh
@@ -51,7 +53,7 @@ conda activate modelscope
     ``` 
 For more versions, please see https://pytorch.org/get-started/locally/
 
-## Install ModelScope:
+## Install ModelScope
 ``` sh
 pip install "modelscope[nlp]" -f https://modelscope.oss-cn-beijing.aliyuncs.com/releases/repo.html
 ```
@@ -67,12 +69,13 @@ pip install -r requirements.txt
 sh run_ponet_topic_segmentation.sh
 ```
 The baseline model is available at [nlp_ponet_document-segmentation_topic-level_chinese-base](https://modelscope.cn/models/damo/nlp_ponet_document-segmentation_topic-level_chinese-base/summary).  
-The dev results of baselines on topic segmentation are as follows:
+The AMC dev set results from the baseline system and systems based on other backbone models on topic segmentation are as follows:
 
 | Model       | Backbone                                                                                                                                    | Positive F1 | 
 |-------------|---------------------------------------------------------------------------------------------------------------------------------------------|-------------|
 | Longformer  | IDEA-CCNL/Erlangshen-Longformer-110M                                                                                                        | 23.24±1.35  |
-| PoNet       | [damo/nlp_ponet_fill-mask_chinese-base](https://modelscope.cn/models/damo/nlp_ponet_fill-mask_chinese-base/summary) | 25.10±0.55  |
+| PoNet(baseline system)       | [damo/nlp_ponet_fill-mask_chinese-base](https://modelscope.cn/models/damo/nlp_ponet_fill-mask_chinese-base/summary) | 25.10±0.55  |
+
 Note: The mean and standard deviation are reported as 5 times run with different seeds. 
 
 ## Track 2 Topic-level and Session-level Extractive Summarization
@@ -81,7 +84,7 @@ sh run_ponet_topic_extractive_summarization.sh
 sh run_ponet_doc_extractive_summarization.sh
 ```
 The baseline model of topic-level ES is available at [nlp_ponet_extractive-summarization_topic-level_chinese-base](https://modelscope.cn/models/damo/nlp_ponet_extractive-summarization_topic-level_chinese-base/summary).  
-The dev results of baselines on topic-level ES are as follows:
+The AMC dev set results from the baseline system and systems based on other backbone models on topic-level ES are as follows:
 
 | Model       | Backbone                                                                                                                                    | Ave. R1    | Ave. R2    | Ave. RL    | Max R1     | Max R2     | Max RL     | 
 |-------------|---------------------------------------------------------------------------------------------------------------------------------------------|------------|------------|------------|------------|------------|------------|
@@ -97,7 +100,7 @@ The dev results of baselines on session-level ES are as follows:
 | Model       | Backbone                                                                                                                                    | Ave. R1    | Ave. R2    | Ave. RL    | Max R1     | Max R2     | Max RL     | 
 |-------------|---------------------------------------------------------------------------------------------------------------------------------------------|------------|------------|------------|------------|------------|------------|
 | Longformer  | IDEA-CCNL/Erlangshen-Longformer-110M                                                                                                        | 56.17±0.33 | 29.52±0.65 | 38.20±1.51 | 61.75±0.45 | 36.84±0.61 | 47.06±1.20 |
-| PoNet       | [damo/nlp_ponet_fill-mask_chinese-base](https://modelscope.cn/models/damo/nlp_ponet_fill-mask_chinese-base/summary) | 56.82±0.22 | 29.73±0.25 | 37.52±0.74 | 61.66±0.37 | 36.89±0.57 | 46.20±0.56 | 
+| PoNet(baseline system)       | [damo/nlp_ponet_fill-mask_chinese-base](https://modelscope.cn/models/damo/nlp_ponet_fill-mask_chinese-base/summary) | 56.82±0.22 | 29.73±0.25 | 37.52±0.74 | 61.66±0.37 | 36.89±0.57 | 46.20±0.56 | 
 
 Note: The mean and standard deviation are reported as 5 times run with different seeds. We report both average and best Rouge-1,2,L scores based on the three references.
 
@@ -106,12 +109,12 @@ Note: The mean and standard deviation are reported as 5 times run with different
 sh run_palm_topic_title_generation.sh
 ```
 The baseline model of topic title generation is available at [nlp_palm2.0_text-generation_meeting_title_chinese-base](https://modelscope.cn/models/damo/nlp_palm2.0_text-generation_meeting_title_chinese-base/summary).  
-The dev results of baselines on topic title generation are as follows:
+The AMC dev set results from the baseline system and systems based on other backbone models on topic title generation are as follows:
 
 | Model   | Backbone                                                                                                                  | Rouge-1 | Rouge-L |
 |---------|---------------------------------------------------------------------------------------------------------------------------|---------|---------|
 | BART    | fnlp/bart-base-chinese                                                                                                    | 31.06   | 28.92   |
-| PALM2.0 | [damo/nlp_palm2.0_pretrained_chinese-base](https://modelscope.cn/models/damo/nlp_palm2.0_pretrained_chinese-base/summary) | 31.28   | 29.43   |
+| PALM2.0(baseline system) | [damo/nlp_palm2.0_pretrained_chinese-base](https://modelscope.cn/models/damo/nlp_palm2.0_pretrained_chinese-base/summary) | 31.28   | 29.43   |
 
 - Note: batchsize=4 if gpuMemory = 16G
 
@@ -119,13 +122,13 @@ The dev results of baselines on topic title generation are as follows:
 Please refer to [src/keyphrase_extraction/readme](src/keyphrase_extraction/README.md)
  
 The baseline model of keyphrase extraction is available at [nlp_structbert_keyphrase-extraction_base-icassp2023-mug-track4-baseline](https://modelscope.cn/models/damo/nlp_structbert_keyphrase-extraction_base-icassp2023-mug-track4-baseline/summary).  
-The dev results of baselines on keyphrase extraction are as follows:
+The AMC dev set results from the baseline system and systems based on other backbone models on keyphrase extraction are as follows:
 
 | Model     | Backbone                                                                                                            | Exact/Partial F1 @10 | Exact/Partial F1 @15 | Exact/Partial F1 @20 |
 |-----------|---------------------------------------------------------------------------------------------------------------------|----------------------|----------------------| --------------------|
 | YAKE      | -                                                                                                                   | 15.0/24.3            | 19.8/30.4            |      20.4/32.1       |
 | Bert-CRF  | sijunhe/nezha-cn-base                                                                                               | 35.6/43.2            | 38.1/49.5            |      37.2/48.1       |
-| Bert-CRF  | [damo/nlp_structbert_backbone_base_std](https://modelscope.cn/models/damo/nlp_structbert_backbone_base_std/summary) | 35.9/47.7            | 40.1/52.2            |      39.4/51.1       |
+| Bert-CRF(baseline system)  | [damo/nlp_structbert_backbone_base_std](https://modelscope.cn/models/damo/nlp_structbert_backbone_base_std/summary) | 35.9/47.7            | 40.1/52.2            |      39.4/51.1       |
 
 ## Track 5 Action Item Detection
 ```shell
@@ -133,14 +136,14 @@ sh run_structbert_action_item_detection.sh
 ```
 
 The baseline model of action item detection is available at [nlp_structbert_alimeeting_action-classification_chinese-base](https://modelscope.cn/models/damo/nlp_structbert_alimeeting_action-classification_chinese-base/summary).  
-The dev results of baselines on action item detection are as follows:
+The AMC dev set results from the baseline system and systems based on other backbone models on action item detection are as follows:
 
 | Model      | Backbone                                                                                                            | Positive F1 |
 |------------|---------------------------------------------------------------------------------------------------------------------|-------------|
 | BERT       | [mengzi-bert-base](https://modelscope.cn/models/langboat/mengzi-bert-base/summary)                                  | 68.15       |
-| StructBERT | [damo/nlp_structbert_backbone_base_std](https://modelscope.cn/models/damo/nlp_structbert_backbone_base_std/summary) | 69.43       |
+| StructBERT(baseline system) | [damo/nlp_structbert_backbone_base_std](https://modelscope.cn/models/damo/nlp_structbert_backbone_base_std/summary) | 69.43       |
 
-# Some Code Note
+# Additional Notes on Code
 - Task Evaluation and Rank Score Computation: metrics/* and utils/challenge_evaluate.py 
 - Get Dataset and Parse for each task: please read alimeeting4mug_data_download function in each tasks baseline.
 
@@ -153,7 +156,7 @@ If you have any questions about AliMeeting4MUG, please contact us by
 - Dingding group:
 <div align="left"><img src="image/dingding.png" width="400"/></div>
 
-# Acknowledge
+# Acknowledgement
 
 1. We borrowed a lot of code from [ModelScope](https://modelscope.cn/home) and [Transformers](https://huggingface.co/docs/transformers/main/en/index).
 

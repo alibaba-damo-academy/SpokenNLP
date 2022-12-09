@@ -366,7 +366,7 @@ def main():
             'Alimeeting4MUG',
             namespace='modelscope',
             download_mode=DownloadMode.FORCE_REDOWNLOAD,
-            subset_name="default",
+            subset_name="only_topic_segmentation",
             **input_config_kwargs)
 
         return DatasetDict(

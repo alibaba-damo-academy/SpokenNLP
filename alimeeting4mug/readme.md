@@ -143,6 +143,10 @@ The AMC dev set results from the baseline system and systems based on other back
 | BERT       | [mengzi-bert-base](https://modelscope.cn/models/langboat/mengzi-bert-base/summary)                                  | 68.15       |
 | StructBERT(baseline system) | [damo/nlp_structbert_backbone_base_std](https://modelscope.cn/models/damo/nlp_structbert_backbone_base_std/summary) | 69.43       |
 
+
+# Offline Evaluation
+if you want to run evaluation and get rank score on dev dataset, please refer to utils/challenge_evaluate.py
+
 # Additional Notes on Code
 - Task Evaluation and Rank Score Computation: metrics/* and utils/challenge_evaluate.py 
 - Get Dataset and Parse for each task: please read alimeeting4mug_data_download function in each tasks baseline.

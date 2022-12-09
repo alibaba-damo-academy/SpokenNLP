@@ -174,6 +174,7 @@ def topic_segment_evaluate(split, input_pred_file):
     total_labels_split = []
 
     for l_sample, p_sample in zip(label_samples, pred_samples):
+        assert l_sample["meeting_key"] == p_sample["meeting_key"], "meeting_key error."
         sentences = l_sample["sentences"]
         para_segment_ids = [_['id'] for _ in l_sample["paragraph_segment_ids"]]
         preds = [0] * len(sentences)
@@ -276,6 +277,7 @@ def extractive_summarization_evaluate(split, input_pred_file):
     total_doc_es_label = []
     total_doc_es_pred = []
     for l_sample, p_sample in zip(label_samples, pred_samples):
+        assert l_sample["meeting_key"] == p_sample["meeting_key"], "meeting_key error."
         sentences = [_['s'] for _ in l_sample["sentences"]]
         label_topics = l_sample["topic_segment_ids"]
         pred_topics = p_sample["topic_segment_ids"]
@@ -352,6 +354,7 @@ def topic_title_generation_evaluate(split, input_pred_file):
     total_topic_ttg_label = []
     total_topic_ttg_pred = []
     for l_sample, p_sample in zip(label_samples, pred_samples):
+        assert l_sample["meeting_key"] == p_sample["meeting_key"], "meeting_key error."
         sentences = [_['s'] for _ in l_sample["sentences"]]
         label_topics = l_sample["topic_segment_ids"]
         pred_topics = p_sample["topic_segment_ids"]
@@ -496,6 +499,7 @@ def keyphrase_extraction_evaluate(split, input_pred_file):
     total_labels = []
 
     for l_sample, p_sample in zip(label_samples, pred_samples):
+        assert l_sample["meeting_key"] == p_sample["meeting_key"], "meeting_key error."
         key_word = [c["key_word"] for c in l_sample["candidate"]]
         key_word = [w for ww in key_word for w in ww]
         label_kp = key_word
@@ -516,6 +520,7 @@ def action_item_detection_evaluate(split, input_pred_file):
     total_labels = []
 
     for l_sample, p_sample in zip(label_samples, pred_samples):
+        assert l_sample["meeting_key"] == p_sample["meeting_key"], "meeting_key error."
         sentences = l_sample["sentences"]
         preds = [0] * len(sentences)
         labels = [0] * len(sentences)

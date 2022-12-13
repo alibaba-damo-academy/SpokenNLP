@@ -59,4 +59,6 @@ do
       --preprocessing_num_workers 5 \
       --return_entity_level_metrics True \
       --output_dir $OUTPUT_DIR >> ${LOGFILE} 2>&1
+
+    python submit_file_generation.py $TASK ${OUTPUT_DIR}/predictions.txt ${OUTPUT_DIR}/submit.json
 done

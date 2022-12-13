@@ -52,4 +52,5 @@ do
       --num_train_epochs 5 \
       --preprocessing_num_workers 5 \
       --output_dir $OUTPUT_DIR >> ${LOGFILE} 2>&1
+    python ./src/action_item_detection/submit_file_generation.py $OUTPUT_DIR/test_predict_result.txt $OUTPUT_DIR/submit.json
 done

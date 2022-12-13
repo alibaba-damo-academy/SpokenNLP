@@ -59,5 +59,6 @@ do
       --preprocessing_num_workers 5 \
       --return_entity_level_metrics True \
       --output_dir $OUTPUT_DIR >> ${LOGFILE} 2>&1
+     python ./src/topic_title_generation/submit_file_generation.py ${OUTPUT_DIR}/test_predict_result.txt ${OUTPUT_DIR}/ttg_submit.json
 done
 #      --per_device_train_batch_size 16 \

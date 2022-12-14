@@ -54,7 +54,7 @@ class KpeEval(datasets.Metric):
         score_sum = 0.0
         for num in [10, 15, 20]:
             predictions_at_num = [pred[:num] for pred in predictions]
-            approximate_match_score = self.calculateApproximateMatchScore(predictions_at_num, references)
+            approximate_match_score = self.calculateCorpusApproximateMatchScore(predictions_at_num, references)
             rouge_score = self.calculateRouge(predictions_at_num, references)
 
             for k, v in approximate_match_score.items():
@@ -67,7 +67,19 @@ class KpeEval(datasets.Metric):
         scores["score"] = score_sum / len(scores.keys())
         return scores
 
-    def calculateApproximateMatchScore(self, keywords, goldenwords):
+    def calculateCorpusApproximateMatchScore(self, keywords, goldenwords):
+        # print("calculateCorpusApproximateMatchScore...")
+        partial_f1_list = []
+        for example_keywords, example_goldenwords in zip(keywords, goldenwords):
+            example_score = self.calculateExampleApproximateMatchScore(example_keywords, example_goldenwords)
+            partial_f1_list.append(example_score["partial_f1"])
+
+        partial_f1 = sum(partial_f1_list) * 1.0 / len(partial_f1_list)
+        # print("partial_f1: ", partial_f1)
+        return {"partial_f1": partial_f1}
+
+
+    def calculateExampleApproximateMatchScore(self, keywords, goldenwords):
 
         def isFuzzyMatch(firststring, secondstring):
             # 判断两个字符串是否模糊匹配;标准是最长公共子串长度是否>=2
@@ -92,10 +104,10 @@ class KpeEval(datasets.Metric):
                 return True
             return False
 
-        keywords = sum(keywords, [])
-        goldenwords = sum(goldenwords, [])
-        print("keywords: ", keywords)
-        print("goldenwords: ", goldenwords)
+        # keywords = sum(keywords, [])
+        # goldenwords = sum(goldenwords, [])
+        # print("keywords: ", keywords)
+        # print("goldenwords: ", goldenwords)
 
         recallLength = len(goldenwords)
         precisionLength = len(keywords)
@@ -131,10 +143,10 @@ class KpeEval(datasets.Metric):
     def calculateRouge(self, keywords, goldenwords):
         keywords = [" ".join(_) for _ in keywords]
         goldenwords = [" ".join(_) for _ in goldenwords]
-        print("keywords: ", keywords)
-        print("goldenwords: ", goldenwords)
+        # print("keywords: ", keywords)
+        # print("goldenwords: ", goldenwords)
         rouge = Rouge()
-        scores = rouge.get_scores(hyps=keywords, refs=goldenwords)
+        scores = rouge.get_scores(hyps=keywords, refs=goldenwords, avg=True)
         return {
-            'exact_f1': scores[0]['rouge-1']['f'],
+            'exact_f1': scores['rouge-1']['f']
         }

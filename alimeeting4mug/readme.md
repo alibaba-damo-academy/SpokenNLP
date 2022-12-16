@@ -55,7 +55,7 @@ For more versions, please see https://pytorch.org/get-started/locally/
 
 ## Install ModelScope
 ``` sh
-pip install "modelscope[nlp]" -f https://modelscope.oss-cn-beijing.aliyuncs.com/releases/repo.html
+pip install "modelscope[nlp]==1.1.0" -f https://modelscope.oss-cn-beijing.aliyuncs.com/releases/repo.html
 ```
 
 ## Install other packages

@@ -82,6 +82,7 @@ Note: The mean and standard deviation (e.g., for 25.10±0.55, 25.10 is the mean,
 ```shell 
 sh run_ponet_topic_extractive_summarization.sh
 sh run_ponet_doc_extractive_summarization.sh
+python ./utils/extractive_summarization_submit_file_generation.py topic_ES_submit_file_path doc_ES_submit_file_path output_file_path
 ```
 The baseline model of topic-level ES is available at [nlp_ponet_extractive-summarization_topic-level_chinese-base](https://modelscope.cn/models/damo/nlp_ponet_extractive-summarization_topic-level_chinese-base/summary).  
 The AMC dev set results from the baseline system and systems based on other backbone models on topic-level ES are as follows:

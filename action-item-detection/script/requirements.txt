@@ -1,0 +1,10 @@
+### Requirements without Version Specifiers ###
+tqdm
+numpy
+scikit-learn
+
+### Requirements with Version Specifiers ###
+six == 1.16.0
+# tensorflow == 1.13.1  # CPU Version of TensorFlow.
+tensorflow-gpu == 1.13.1  # GPU version of TensorFlow.
+protobuf == 3.20.*

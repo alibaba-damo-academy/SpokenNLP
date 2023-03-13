@@ -181,10 +181,10 @@ Then you can use `python average_performance.py` to compute the average performa
 
 
 We use both the AMI meeting corpus and our Chinese meeting corpus (AMC-A).
-Considering the sparsity of positive samples, we report positive F$_1$ as the evaluation metric.
+Considering the sparsity of positive samples, we report positive F1 as the evaluation metric.
 
 
-Base Model    |             Input               |          Method        | AMC-A F1 | AMI-F1
+Base Model    |             Input               |          Method        | AMC-A F1 | AMI F1
 --------------|---------------------------------| :---------------------:| :------:| :------:
 BERT          | sentence                        | None                   |  64.76  |  38.18
 StructBERT    | sentence                        | None                   |  67.84  |  38.67
@@ -201,6 +201,30 @@ StructBERT    | sentence + local&global context | None                   |  69.0
 StructBERT    | sentence + local&global context | R-Drop                 |  68.72  |  40.75
 StructBERT    | sentence + local&global context | Context-Drop (fixed)   |  69.28  |  38.66
 StructBERT    | sentence + local&global context | Context-Drop (dynamic) |  70.82  |  41.50
+
+Note: The AMC-A test dataset in the paper is different from the test dataset of the [ICASSP 2023 MUG Challenge Track5 Action Item Detection (AID)](https://modelscope.cn/competition/17/summary). 
+The test dataset in the paper contains 64 meetings. 
+On this basis, we add 100 new meetings and split them into test1 of phase1 and test2 of phase2 containing 82 meetings respectively. 
+Here, we attach the performance on test1 and test2 of the action item detection track.
+
+
+Base Model    |             Input               |          Method        | AMC-A Test1 F1 | AMC-A Test2 F1
+--------------|---------------------------------| :---------------------:| :-------------:| :------------:
+BERT          | sentence                        | None                   |      65.10     |  60.27
+StructBERT    | sentence                        | None                   |      67.09     |  62.49
+StructBERT    | sentence                        | R-Drop                 |      68.36     |  64.54
+StructBERT    | sentence + local context        | None                   |      66.56     |  63.33
+StructBERT    | sentence + local context        | R-Drop                 |      68.65     |  64.19
+StructBERT    | sentence + local context        | Context-Drop (fixed)   |      67.85     |  63.57
+StructBERT    | sentence + local context        | Context-Drop (dynamic) |      68.73     |  64.25
+StructBERT    | sentence + global context       | None                   |      67.85     |  62.50
+StructBERT    | sentence + global context       | R-Drop                 |      68.74     |  65.01
+StructBERT    | sentence + global context       | Context-Drop (fixed)   |      68.26     |  64.57
+StructBERT    | sentence + global context       | Context-Drop (dynamic) |      68.98     |  65.04
+StructBERT    | sentence + local&global context | None                   |      67.70     |  64.23
+StructBERT    | sentence + local&global context | R-Drop                 |      67.91     |  64.51
+StructBERT    | sentence + local&global context | Context-Drop (fixed)   |      67.78     |  64.91
+StructBERT    | sentence + local&global context | Context-Drop (dynamic) |      68.60     |  65.31
 
 
 

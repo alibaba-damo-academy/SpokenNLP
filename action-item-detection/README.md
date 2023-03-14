@@ -226,7 +226,18 @@ StructBERT    | sentence + local&global context | R-Drop                 |      
 StructBERT    | sentence + local&global context | Context-Drop (fixed)   |      67.78     |  64.91
 StructBERT    | sentence + local&global context | Context-Drop (dynamic) |      68.60     |  65.31
 
+## Citing
+If the AMC-A corpus and methods in this project are helpful to your research, please cite:
 
+```shell
+@inproceedings{liu2023action,
+  title={Meeting Action Item Detection with Regularized Context Modeling},
+  author={Liu, Jiaqing and Deng, Chong and Zhang, Qinglin and Chen, Qian and Wang, Wen},
+  booktitle={ICASSP 2023-2023 IEEE International Conference on Acoustics, Speech and Signal Processing (ICASSP)},
+  year={2023},
+  organization={IEEE}
+}
+```
 
 ## Acknowledgement
 We borrowed a lot of code from [Google BERT](https://github.com/google-research/bert/).

@@ -194,12 +194,8 @@ StructBERT    | sentence + local context        | R-Drop                 |  68.7
 StructBERT    | sentence + local context        | Context-Drop (fixed)   |  69.15  |  43.12
 StructBERT    | sentence + local context        | Context-Drop (dynamic) |  69.53  |  42.05
 StructBERT    | sentence + global context       | None                   |  67.99  |  35.82
-StructBERT    | sentence + global context       | R-Drop                 |  69.80  |  37.88
-StructBERT    | sentence + global context       | Context-Drop (fixed)   |  69.07  |  39.23
 StructBERT    | sentence + global context       | Context-Drop (dynamic) |  70.48  |  41.25
 StructBERT    | sentence + local&global context | None                   |  69.09  |  41.31
-StructBERT    | sentence + local&global context | R-Drop                 |  68.72  |  40.75
-StructBERT    | sentence + local&global context | Context-Drop (fixed)   |  69.28  |  38.66
 StructBERT    | sentence + local&global context | Context-Drop (dynamic) |  70.82  |  41.50
 
 Note: The AMC-A test dataset in the paper is different from the test dataset of the [ICASSP 2023 MUG Challenge Track5 Action Item Detection (AID)](https://modelscope.cn/competition/17/summary). 
@@ -218,12 +214,8 @@ StructBERT    | sentence + local context        | R-Drop                 |      
 StructBERT    | sentence + local context        | Context-Drop (fixed)   |      67.85     |  63.57
 StructBERT    | sentence + local context        | Context-Drop (dynamic) |      68.73     |  64.25
 StructBERT    | sentence + global context       | None                   |      67.85     |  62.50
-StructBERT    | sentence + global context       | R-Drop                 |      68.74     |  65.01
-StructBERT    | sentence + global context       | Context-Drop (fixed)   |      68.26     |  64.57
 StructBERT    | sentence + global context       | Context-Drop (dynamic) |      68.98     |  65.04
 StructBERT    | sentence + local&global context | None                   |      67.70     |  64.23
-StructBERT    | sentence + local&global context | R-Drop                 |      67.91     |  64.51
-StructBERT    | sentence + local&global context | Context-Drop (fixed)   |      67.78     |  64.91
 StructBERT    | sentence + local&global context | Context-Drop (dynamic) |      68.60     |  65.31
 
 ## Citing

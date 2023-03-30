@@ -1,5 +1,10 @@
 # Meeting Action Item Detection with Regularized Context Modeling
 
+- [**Meeting Action Item Detection with Regularized Context Modeling**](https://arxiv.org/abs/2303.16763)
+- *Jiaqing Liu, Chong Deng, Qinglin Zhang, Qian Chen, Wen Wang*
+
+## Introduction
+
 Meetings are an increasingly important way to collaborate. 
 With the support of automatic speech recognition, 
 the meetings could be transcribed into transcripts. 
@@ -16,7 +21,7 @@ we propose the **Context-Drop** approach to utilize both local and global contex
 and achieve better performance and robustness in the action item detection task. 
 In addition, we explore the **Lightweight Model Ensemble** method to exploit different pre-trained models
 
-The paper has been accepted by ICASSP 2023.
+The [paper](https://arxiv.org/abs/2303.16763) has been accepted by ICASSP 2023.
 
 ## Installation
 ### Clone the repo
@@ -158,7 +163,7 @@ You can modify some experimental setting, such as:
 - `$CONTEXT_WIDTH`: the width of contextual input.
 - `$DROP_TYPE`: the contrastive learning method type, including `r-drop`, `context-drop-fix`, `context-drop-dynamic`.
 
-Please see the paper for more details.
+Please see the [paper](https://arxiv.org/abs/2303.16763) for more details.
 
 Note: You can run `python night_listener.py` along with `bash go_train.sh`, 
 so that you can save the best models based on F1 during the evaluation period.

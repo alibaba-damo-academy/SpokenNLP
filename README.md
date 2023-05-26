@@ -5,6 +5,7 @@
 
 ## 🔥 News
 
+- [**2023-05-22**]: [`PoNet`](https://github.com/lxchtan/ponet) are submitted to [huggingface hub](https://huggingface.co/chtan/ponet-base-uncased). PoNet can now be used directly through the Transformers library. 
 - [**2022-12-02**]: [`alimeeting4mug`](alimeeting4mug) released the official baseline system codebase for ICASSP2023 General Meeting Understanding and Generation Challenge (MUG)!
 - [**2022-02-24**]: [`MDERank`](https://github.com/linhanz/mderank) was accepted by Findings of ACL 2022. It is a Masked Document Embedding Rank approach for unsupervised keyphrase extraction, which outperforms state-of-the-art unsupervised keyphrase extraction approaches, especially on long documents. 
 - [**2022-01-21**]: [`PoNet`](https://github.com/lxchtan/ponet) was accepted by ICLR 2022. It is a novel Pooling Network (PoNet) for token mixing in long sequences with linear complexity, which achieves a good balance between transfer learning capability and accuracy and complexity for long sequence modeling. Models are released at Modelscope ([English](https://modelscope.cn/models/damo/nlp_ponet_fill-mask_english-base/summary) and [Chinese](https://modelscope.cn/models/damo/nlp_ponet_fill-mask_chinese-base/summary)).

@@ -1,0 +1,12 @@
+# torch==1.12.1+cu113
+transformers==4.26
+datasets==2.9.0
+accelerate==0.16
+seqeval==1.2.2
+evaluate==0.4.0
+segeval==2.0.11
+protobuf==3.20
+tokenizers==0.12.1
+matplotlib==3.7.1
+tqdm==4.65.0
+nltk==3.8.1

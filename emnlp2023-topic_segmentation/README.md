@@ -17,7 +17,7 @@ then `unzip punkt.zip` and move punkt folder to `path/to/your/anaconda3/envs/tor
 # Dataset
 
 After downloading and decompressing the source data, including [WikiSection](https://github.com/sebastianarnold/WikiSection), [Elements](http://groups.csail.mit.edu/rbg/code/mallows/), [WIKI-727K and WIKI-50](https://github.com/koomri/text-segmentation),
-you need to specify the source data path in `./scripts/config/config.ini`. 
+you need to specify the source data path in `./config/config.ini`. 
 Note that after decompressing WikiSection by running `unzip WikiSection-master.zip`, 
 you need to further run `cd WikiSection-master && tar -xvzf wikisection_dataset_json.tar.gz` to get the data.
 

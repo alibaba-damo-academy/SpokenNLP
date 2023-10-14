@@ -243,7 +243,7 @@ def get_process_dict():
 
 if __name__ == "__main__":
     out_root_folder = "./data"
-    config_path = "./src/config/config.ini"
+    config_path = "./config/config.ini"
     data_name2folder = get_data_name2folder(config_path)
     process_dict = get_process_dict()
 

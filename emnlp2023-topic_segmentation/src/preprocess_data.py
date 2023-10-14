@@ -8,7 +8,7 @@ from tqdm import tqdm
 from nltk.tokenize import sent_tokenize
 
 from analysis import tokenizer
-
+from analysis.statistics_of_data import data_statistics
 
 bTokenizer = tokenizer.BasicTokenizer()
 tokenize_func = bTokenizer.tokenize
@@ -242,8 +242,8 @@ def get_process_dict():
 
 
 if __name__ == "__main__":
-    out_root_folder = "../data"
-    config_path = "./config/config.ini"
+    out_root_folder = "./data"
+    config_path = "./src/config/config.ini"
     data_name2folder = get_data_name2folder(config_path)
     process_dict = get_process_dict()
 
@@ -258,3 +258,7 @@ if __name__ == "__main__":
         os.makedirs(out_folder)
     process_fct = process_dict[data_name]
     process_fct(data_folder, out_folder)
+
+    data_statistics(os.path.join(out_folder, "train.jsonl"))
+    data_statistics(os.path.join(out_folder, "dev.jsonl"))
+    data_statistics(os.path.join(out_folder, "test.jsonl"))

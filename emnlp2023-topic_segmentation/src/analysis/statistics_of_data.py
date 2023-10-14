@@ -14,6 +14,9 @@ tokenize_func = bTokenizer.tokenize
 
 
 def data_statistics(in_file):
+    if not os.path.exists(in_file):
+        print("{} not found".format(in_file))
+        return
     # "篇章字符长度", "句子数", "话题数", "句子长度", "话题长度", "话题句子数"
     describe_df_output_path = os.path.join(os.path.dirname(in_file), "{}_describe_df.csv".format(os.path.basename(in_file)))
     

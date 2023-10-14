@@ -6,7 +6,7 @@ The official repository of our EMNLP 2023 paper "**Improving Long Document Topic
 
 ```json
 git clone git@github.com:alibaba-damo-academy/SpokenNLP.git
-cd ./SpokenNLP/emnlp2023-topic_segmentation/scripts
+cd ./SpokenNLP/emnlp2023-topic_segmentation
 conda create -n torch1.12.1 python=3.8
 source activate torch1.12.1
 pip install -r requirements.txt
@@ -45,10 +45,6 @@ Then run `bash run_finetune.sh`.
 Change some key parameters like `model_name` and `model_path` in `run_inference.sh`.
 
 Then run `bash run_inference.sh`.
-
-
-It's worth noting that we use newline character to obtain paragraph information in WikiSection, and let the model predict topic boundaries only at the end of the paragraph. 
-Therefore, to get sentence-level sliding window metric `P_{k}` and `WD`, you need to execute the `postprocess_prediction.py` script.
 
 
 # Citation

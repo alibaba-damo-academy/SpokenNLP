@@ -6,8 +6,8 @@ echo $NUM_GPU
 PORT_ID=$(expr $RANDOM + 1000)
 export OMP_NUM_THREADS=8
 
-metric_name=./metrics/seqeval.py
-model_root_folder=../pretrained_models
+metric_name=./src/metrics/seqeval.py
+model_root_folder=./pretrained_models
 
 # max_seq_length=512
 max_seq_length=2048
@@ -19,9 +19,10 @@ max_seq_length=2048
 model_name=longformer_base
 
 dataset=wiki_section
+dataset=wiki_section_disease
 # dataset=wiki727k
 
-dataset_cache_dir=../cached_data/${dataset}_${model_name}_${max_seq_length}
+dataset_cache_dir=./cached_data/${dataset}_${model_name}_${max_seq_length}
 
 # num_train_epochs=3
 num_train_epochs=5
@@ -50,16 +51,16 @@ for seed in 42 59 88; do
   
   bs=`expr $NUM_GPU \* $per_device_train_batch_size \* $gradient_accumulation_steps`
   currentTime=`date "+%Y-%m-%d_%H:%M:%S"`
-  OUTPUT_DIR=../output/${model_name}-finetune-${dataset}/seed${seed}-seq${max_seq_length}-lr${lr}-epoch${num_train_epochs}-bs${bs}-ts${ts_loss_weight}-tssp${tssp_loss_weight}-cl${cl_loss_weight}-${currentTime}
+  OUTPUT_DIR=./output/${model_name}-finetune-${dataset}/seed${seed}-seq${max_seq_length}-lr${lr}-epoch${num_train_epochs}-bs${bs}-ts${ts_loss_weight}-tssp${tssp_loss_weight}-cl${cl_loss_weight}-${currentTime}
   mkdir -p $OUTPUT_DIR
   LOGFILE=$OUTPUT_DIR/run.log
   echo "write log into "${LOGFILE}
   echo $CUDA_VISIBLE_DEVICES >> ${LOGFILE}
 
-  # python ts_sentence_seq_labeling.py \
-  TORCH_DISTRIBUTED_DEBUG=DETAIL python -m torch.distributed.launch --nproc_per_node $NUM_GPU --master_port $PORT_ID ts_sentence_seq_labeling.py \
+  # python ./src/ts_sentence_seq_labeling.py \
+  TORCH_DISTRIBUTED_DEBUG=DETAIL python -m torch.distributed.launch --nproc_per_node $NUM_GPU --master_port $PORT_ID ./src/ts_sentence_seq_labeling.py \
     --model_name_or_path ${model_root_folder}/${model_name} \
-    --dataset_name ./datasets/${dataset} \
+    --dataset_name ./src/datasets/${dataset} \
     --dataset_cache_dir ${dataset_cache_dir} \
     --metric_name ${metric_name} \
     --gradient_checkpointing False \
@@ -93,4 +94,12 @@ for seed in 42 59 88; do
     --cl_negative_k ${cl_negative_k} \
     --tssp_loss_weight ${tssp_loss_weight} \
     --output_dir ${OUTPUT_DIR} >> ${LOGFILE} 2>&1
+
+  if [ $dataset = wiki_section ]; then
+    echo "run postprocess_predictions to get_wiki_section_sent_level_metric"
+    echo "then save sent level metric in "${LOGFILE}
+    data_file=./data/$dataset/test.jsonl
+    pred_file=${OUTPUT_DIR}/predict_wiki_section_max_seq${max_seq_length}_ts_score_lt.txt
+    python ./src/postprocess_predictions.py $data_file $pred_file >> ${LOGFILE} 2>&1
+  fi
 done

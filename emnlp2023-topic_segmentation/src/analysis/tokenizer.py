@@ -16,7 +16,7 @@
 import os
 import collections
 import unicodedata
-from tokenizer_utils import convert_to_unicode, whitespace_tokenize, _is_whitespace, _is_control, _is_punctuation, _is_symbol
+from .tokenizer_utils import convert_to_unicode, whitespace_tokenize, _is_whitespace, _is_control, _is_punctuation, _is_symbol
 
 class BasicTokenizer(object):
     """

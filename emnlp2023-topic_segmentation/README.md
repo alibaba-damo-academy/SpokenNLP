@@ -51,6 +51,15 @@ Then run `bash run_inference.sh`.
 
 If you find our code or our paper useful for your research, please **[★star]** this repo and **[cite]** our paper.
 
+```
+@article{improving,
+  title={Improving Long Document Topic Segmentation Models With Enhanced Coherence Modeling},
+  author={Hai Yu, Chong Deng, Qinglin Zhang, Jiaqing Liu, Qian Chen, Wen Wang},
+  journal={arXiv preprint arXiv:2310.11772},
+  year={2023}
+}
+```
+
 # License
 
 Licensed under the [Apache License 2.0](https://github.com/alibaba-damo-academy/SpokenNLP/blob/main/LICENSE). This project contains various third-party components under other open source licenses.

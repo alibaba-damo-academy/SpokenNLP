@@ -1,9 +1,10 @@
 # SpokenNLP
 
-**SpokenNLP: The official repository for codebases on a wide variety of research projects developed by the SpokenNLP team of Speech Lab, Alibaba DAMO Academy.**
+**SpokenNLP: The official repository for codebases on a wide variety of research projects developed by the SpokenNLP team of Speech Lab, Alibaba Group.**
 
 
 ## 🔥 News
+- [**2023-10-23**]: [`Ditto`](https://github.com/alibaba-damo-academy/SpokenNLP/tree/main/ditto) was accepted by EMNLP 2023. It introduces Ditto: a learning-free approach that uses model-based importance estimations to weight words and compute sentence embeddings from pre-trained model representations.
 - [**2023-10-07**]: [`Improving Long Document Topic Segmentation Models With Enhanced Coherence Modeling`](https://github.com/alibaba-damo-academy/SpokenNLP/tree/main/emnlp2023-topic_segmentation) was accepted by EMNLP 2023. It enhances the pretrained language model’s ability to capture coherence from both structure and similarity perspectives to further improve the topic segmentation performance.
 - [**2023-05-22**]: [`PoNet`](https://github.com/lxchtan/ponet) are submitted to [huggingface hub](https://huggingface.co/chtan/ponet-base-uncased). PoNet can now be used directly through the Transformers library. 
 - [**2022-12-02**]: [`alimeeting4mug`](alimeeting4mug) released the official baseline system codebase for ICASSP2023 General Meeting Understanding and Generation Challenge (MUG)!

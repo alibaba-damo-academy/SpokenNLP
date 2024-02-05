@@ -1,0 +1,21 @@
+fairseq
+npy_append_array
+pyarrow
+soundfile
+timm
+editdistance
+transformers == 4.25.1
+tensorboardX
+tensorboard
+accelerate >= 0.12.0
+datasets >= 1.8.0
+sentencepiece != 0.1.92
+protobuf
+rouge-score
+nltk
+py7zr
+evaluate
+sacrebleu
+librosa
+jiwer
+einops

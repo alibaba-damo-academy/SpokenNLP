@@ -1,24 +1,12 @@
-# Loss Masking Is Not Needed in Decoder-only Transformer for Discrete-token Based ASR
+# Loss Masking Is Not Needed in Decoder-only Transformer for Discrete-token-based ASR
 
 This repository contains the code for our ICASSP 2024
-paper [Loss Masking Is Not Needed in Decoder-only Transformer for Discrete-token Based ASR
-](https://arxiv.org/abs/2311.04534).
+paper [LOSS MASKING IS NOT NEEDED IN DECODER-ONLY TRANSFORMER FOR DISCRETE-TOKEN-BASED ASR](https://arxiv.org/abs/2311.04534).
 
 ## Overview
 
-Recently, unified speech-text models, such as SpeechGPT, VioLA, and AudioPaLM, have achieved remarkable performance on
-speech tasks.
-These models convert continuous speech signals into discrete tokens (speech discretization) and merge text and
-speech tokens into a shared vocabulary.
-Then they train a single decoder-only Transformer on a mixture of speech tasks. Specifically, all these models utilize
-Loss Masking on the input speech tokens for the ASR task, which means that these models do not explicitly model
-the dependency between the speech tokens.
-In this paper, we attempt to model the sequence of speech tokens in an autoregressive manner like text. However, we find
-that applying the conventional cross-entropy loss on input speech tokens does not consistently improve the ASR
-performance over Loss Masking. Therefore, we propose a novel approach denoted Smoothed Label Distillation (SLD), which introduces a KL divergence loss with smoothed labels on the input speech tokens to effectively model speech
-tokens. Experiments demonstrate that our SLD approach alleviates the limitations of the cross-entropy loss and
-consistently outperforms Loss Masking for decoder-only Transformer based ASR using different speech discretization
-methods.
+Recently, unified speech-text models, such as SpeechGPT, VioLA, and AudioPaLM, have achieved remarkable performance on various speech tasks. These models discretize speech signals into tokens (speech discretization) and use a shared vocabulary for both text and speech tokens. Then they train a single decoder-only Transformer on a mixture of speech tasks. However, these models rely on the Loss Masking strategy for the ASR task, which ignores the dependency among speech tokens. 
+In this paper, we propose to model speech tokens in an autoregressive way, similar to text. We find that applying the conventional cross-entropy loss on input speech tokens does not consistently improve the ASR performance over the Loss Masking approach. To address this issue, we propose a novel approach denoted Smoothed Label Distillation (SLD), which applies a KL divergence loss with smoothed labels on speech tokens. Our experiments show that SLD effectively models speech tokens and outperforms Loss Masking for decoder-only Transformers in ASR tasks with different speech discretization methods.
 ![](figure/sld.png)
 
 ## Installation
@@ -70,7 +58,7 @@ If this project are helpful to your research, please cite:
                   Hai Yu and
                   Jiaqing Liu and
                   Chong Zhang},
-  title        = {Loss Masking Is Not Needed in Decoder-only Transformer for Discrete-token Based ASR},
+  title        = {LOSS MASKING IS NOT NEEDED IN DECODER-ONLY TRANSFORMER FOR DISCRETE-TOKEN-BASED ASR},
   booktitle    = {ICASSP 2024},
   year         = {2024},
 }

@@ -23,7 +23,8 @@ If you notice any infringement, please don't hesitate to reach out to us at your
 ## Data Acquisition
 
 In the swab_example.json file, we have shown results for only 6 documents, with one document per scenario. 
-If you require the complete SWAB data of 60 documents, please contact us via the provided email address and specify the purpose of the data. We will provide the full dataset accordingly, ensuring ethical use of the dataset.
+If you require the complete SWAB data of 60 documents, please contact us via the provided email address (mingzhai.ljq@alibaba-inc.com)
+and specify the purpose of the data. We will provide the full dataset accordingly, ensuring ethical use of the dataset.
 
 
 ## Field Description

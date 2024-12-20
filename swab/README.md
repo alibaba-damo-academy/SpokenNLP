@@ -1,5 +1,7 @@
 # SWAB Dataset
 
+SWAB (**S**poken2**W**ritten of **A**SR transcripts **B**enchmark) is a benchmark for **Contextualized Spoken-to-Written conversion (CoS2W)** task. SWAB contains 60 *document-level* transcripts with manual annotations and auxiliary information, covering meeting, podcast, and lecture domains in both Chinese and English languages. More details about SWAB can be found in our paper, which is accepted by AAAI 2025.
+
 - [**Recording for Eyes, Not Echoing to Ears: Contextualized Spoken-to-Written Conversion of ASR Transcripts**](https://arxiv.org/abs/2408.09688)
 - *Jiaqing Liu, Chong Deng, Qinglin Zhang, Shilin Zhou, Qian Chen, Hai Yu, Wen Wang*
 
@@ -28,7 +30,7 @@ If you require the complete SWAB data of 60 documents, please contact us via the
 
 The meanings of the fields in the provided JSON file of the SWAB dataset are as follows:
 
-```shell
+```json
 {
   "meeting_key": "title of the document",
   "sentences": [
@@ -40,14 +42,14 @@ The meanings of the fields in the provided JSON file of the SWAB dataset are as 
       "start_time": "start time of the sentence",
       "end_time": "end time of the sentence"
     },
-    ...
+    {}
   ],
   "paragraph_segment_ids": [
     {
       "id": "sentence ID at the end of the paragraph",
       "target": "human annotation result for the CoS2W task corresponding to the paragraph"
     },
-    ...
+    {}
   ],
   "description": "auxiliary Information",
   "language": "language, Chinese/English",
@@ -56,7 +58,7 @@ The meanings of the fields in the provided JSON file of the SWAB dataset are as 
 }
 ```
 
-## Data Statistic
+## Data Statistics
 
 The following table presents the statistics of the SWAB. 
 It can be seen that both Chinese and English data contain sufficient paragraphs, providing ample support for the evaluation. 
@@ -73,10 +75,10 @@ Additionally, we have collected relevant auxiliary information. In particular, t
 | SWAB            | 9555.53  |   419.25    |    163.03    | 125.38  |    2.43    |   459.53    |
 
 
-## Citing
+## Citation
 If the SWAB dataset and methods in this project are helpful to your research, please cite:
 
-```shell
+```
 @inproceedings{liu2024recording,
   title={Recording for Eyes, Not Echoing to Ears: Contextualized Spoken-to-Written Conversion of ASR Transcripts},
   author={Liu, Jiaqing and Deng, Chong and Zhang, Qinglin and Chen, Qian and Yu, Hai and Wang, Wen},

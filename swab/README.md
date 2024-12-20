@@ -1,6 +1,6 @@
 # SWAB Dataset
 
-SWAB (**S**poken2**W**ritten of **A**SR transcripts **B**enchmark) is a benchmark for **Contextualized Spoken-to-Written conversion (CoS2W)** task. SWAB contains 60 *document-level* transcripts with manual annotations and auxiliary information, covering meeting, podcast, and lecture domains in both Chinese and English languages. More details about SWAB can be found in our paper, which is accepted by AAAI 2025.
+SWAB (**S**poken2**W**ritten of **A**SR transcripts **B**enchmark) is a benchmark for **Contextualized Spoken-to-Written conversion (CoS2W)** task. SWAB contains 60 *document-level* transcripts with manual annotations and auxiliary information, covering meeting, podcast, and lecture domains in both Chinese and English languages. More details about SWAB can be found in our [paper](https://arxiv.org/abs/2408.09688), which is accepted by AAAI 2025.
 
 - [**Recording for Eyes, Not Echoing to Ears: Contextualized Spoken-to-Written Conversion of ASR Transcripts**](https://arxiv.org/abs/2408.09688)
 - *Jiaqing Liu, Chong Deng, Qinglin Zhang, Shilin Zhou, Qian Chen, Hai Yu, Wen Wang*
@@ -91,5 +91,5 @@ If the SWAB dataset and methods in this project are helpful to your research, pl
 ## License
 The SWAB dataset, developed by Alibaba Group, 
 is intended strictly for academic and non-commercial purposes 
-and is distributed under the Apache License (Version 2.0). 
+and is distributed under the Apache License (Version 2.0).
 

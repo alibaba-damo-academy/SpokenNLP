@@ -82,7 +82,7 @@ If the SWAB dataset and methods in this project are helpful to your research, pl
 ```
 @inproceedings{liu2024recording,
   title={Recording for Eyes, Not Echoing to Ears: Contextualized Spoken-to-Written Conversion of ASR Transcripts},
-  author={Liu, Jiaqing and Deng, Chong and Zhang, Qinglin and Chen, Qian and Yu, Hai and Wang, Wen},
+  author={Liu, Jiaqing and Deng, Chong and Zhang, Qinglin and Zhou, Shilin and Chen, Qian and Yu, Hai and Wang, Wen},
   booktitle={Proceedings of the AAAI Conference on Artificial Intelligence},
   year={2025}
 }

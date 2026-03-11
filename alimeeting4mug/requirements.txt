@@ -113,7 +113,6 @@ tensorboard==2.11.0
 tensorboard-data-server==0.6.1
 tensorboard-plugin-wit==1.8.1
 termcolor==2.1.1
-text2sql-lgesql==1.2.0
 thinc==8.1.5
 threadpoolctl==3.1.0
 tifffile==2021.11.2
